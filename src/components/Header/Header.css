@@ -1,0 +1,28 @@
+.container{
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+a{
+    text-decoration: none;
+}
+
+.header{
+    background-color: rgb(137, 212, 25);
+    height: 60px;
+}
+
+.header__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+.header__list{
+    display: flex;
+    list-style: none;
+}
+
+.header__item:nth-child(1){
+    margin-right: 10px;
+}
