@@ -53,7 +53,7 @@ const AddBook = () => {
             <label>Автор</label>
             <input type="text" onChange={(e) => handleChange('Author', e.target.value)} value={books1.Author} />
             <label>Год публикации</label>
-            <input type="number" min="1800" onChange={(e) => handleChange('Year', e.target.value)} value={books1.Year} />
+            <input type="number" onChange={(e) => handleChange('Year', e.target.value)} value={books1.Year} />
             <label>Рейтинг</label>
             <input type="text" onChange={(e) => handleChange('Raiting', e.target.value)} value={books1.Raiting} />
             <label>ISBN</label>
