@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {v4 as uuidv4} from 'uuid'
 import firebase from '../../firebase'
+import './AddBook.css'
 
 const AddBook = () => {
     const [books1, setBooks] = useState({
@@ -8,7 +9,7 @@ const AddBook = () => {
         Name: '',
         Author: '',
         Year: '',
-        Raiting: '',
+        Raiting: '0',
         ISBN: '',
     })
 
@@ -20,10 +21,6 @@ const AddBook = () => {
         setBooks({...books1, [userKey]: value})
     }
 
-    // const handleChangeAuthor = (e) => {
-        
-    //     setBooks({...books1, ['Author']: e.target.value})
-    // }
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -43,23 +40,26 @@ const AddBook = () => {
             .catch(function (error){
                 console.log(error)
             })
-            // setLoading(false)
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <label>Название книг</label>
-            <input type="text" maxLength="100" onChange={(e) => handleChange('Name', e.target.value)} value={books1.Name} />
-            <label>Автор</label>
-            <input type="text" onChange={(e) => handleChange('Author', e.target.value)} value={books1.Author} />
-            <label>Год публикации</label>
-            <input type="number" onChange={(e) => handleChange('Year', e.target.value)} value={books1.Year} />
-            <label>Рейтинг</label>
-            <input type="text" onChange={(e) => handleChange('Raiting', e.target.value)} value={books1.Raiting} />
-            <label>ISBN</label>
-            <input type="text" onChange={(e) => handleChange('ISBN', e.target.value)} value={books1.ISBN} />
-            <button type="submit">Добавить</button>
-        </form>
+        <section className="add">
+            <div className="container">
+                <form className="add__form" onSubmit={handleSubmit}>
+                    <label>Название книги</label><br/>
+                    <input className="add__input" type="text" maxLength="100" onChange={(e) => handleChange('Name', e.target.value)} value={books1.Name} required/><br/>
+                    <label>Автор</label><br/>
+                    <input className="add__input" type="text" onChange={(e) => handleChange('Author', e.target.value)} value={books1.Author} required/><br/>
+                    <label>Год публикации</label><br/>
+                    <input className="add__input" type="number" min="1800" onChange={(e) => handleChange('Year', e.target.value)} value={books1.Year} /><br/>
+                    <label>Рейтинг</label><br/>
+                    <input className="add__input" type="number" min="0" max="10" onChange={(e) => handleChange('Raiting', e.target.value)} value={books1.Raiting} /><br/>
+                    <label>ISBN</label><br/>
+                    <input className="add__input" type="text" onChange={(e) => handleChange('ISBN', e.target.value)} value={books1.ISBN} /><br/>
+                    <button className="add__btn" type="submit">Добавить</button>
+                </form>
+            </div>
+        </section>
     )
 }
 

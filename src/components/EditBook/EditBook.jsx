@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import firebase from '../../firebase'
+import './EditBook.css'
+
 
 const EditBook = (route) => {
     const id = route.match.params.id
@@ -21,7 +23,7 @@ const EditBook = (route) => {
     }
 
     const handleSubmit = async(e) => {
-        // e.preventDefault();
+        e.preventDefault();
 
         ref
             .doc(books1.id)
@@ -60,19 +62,23 @@ const EditBook = (route) => {
     }, [])
 
     return(
-        <form onSubmit={handleSubmit}>
-            <label>Название книги</label>
-            <input type="text" onChange={(e) => handleChange('Name', e.target.value)} value={books1.Name} />
-            <label>Автор</label>
-            <input type="text" onChange={(e) => handleChange('Author', e.target.value)} value={books1.Author} />
-            <label>Год публикации</label>
-            <input type="number" onChange={(e) => handleChange('Year', e.target.value)} value={books1.Year} />
-            <label>Рейтинг</label>
-            <input type="text" onChange={(e) => handleChange('Raiting', e.target.value)} value={books1.raiting} />
-            <label>ISBN</label>
-            <input type="text" onChange={(e) => handleChange('ISBN', e.target.value)} value={books1.ISBN} />
-            <button type="submit">Изменить</button>
-        </form>
+        <section className="edit">
+            <div className="container">
+                <form className="edit__form" onSubmit={handleSubmit}>
+                    <label>Название книги</label><br/>
+                    <input className="edit__input" type="text" maxLength="100" onChange={(e) => handleChange('Name', e.target.value)} value={books1.Name} required/><br/>
+                    <label>Автор</label><br/>
+                    <input className="edit__input" type="text" onChange={(e) => handleChange('Author', e.target.value)} value={books1.Author} required/><br/>
+                    <label>Год публикации</label><br/>
+                    <input className="edit__input" type="number" min="1800" onChange={(e) => handleChange('Year', e.target.value)} value={books1.Year} /><br/>
+                    <label>Рейтинг</label><br/>
+                    <input className="edit__input" type="number" min="0" max="10" onChange={(e) => handleChange('Raiting', e.target.value)} value={books1.Raiting} /><br/>
+                    <label>ISBN</label><br/>
+                    <input className="edit__input" type="text" onChange={(e) => handleChange('ISBN', e.target.value)} value={books1.ISBN} /><br/>
+                    <button className="edit__btn" type="submit">Изменить</button>
+                </form>
+            </div>
+        </section>
     )
 }
 

@@ -1,0 +1,53 @@
+body{
+    font-size: 18px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.books{
+    margin-top: 30px;
+}
+
+.books__wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.books__link{
+    display: block;
+    border: 1px solid rgb(91, 253, 4);
+    width: 135px;
+    padding: 10px;
+    background-color: rgb(91, 253, 4);
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.books__title{
+    font-weight: bold;
+}
+
+.books__recommendation{
+    margin-top: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    max-width: 300px;
+
+    padding: 10px 0 10px 10px;
+}
+
+.books__list{
+    margin-top: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    max-width: 300px;
+
+    padding: 10px 0 10px 10px;
+}
+
+.books__info{
+    margin-bottom: 5px;
+}
+
+.books__delete{
+    margin: 10px 10px 10px 0;
+}

@@ -1,0 +1,33 @@
+.edit__form{
+    margin: 0 auto;
+    margin-top: 50px;
+
+    max-width: 325px;
+    width: 100%;
+}
+
+.edit__input{
+    width: 300px;
+    border-radius: 20px;
+    outline: none;
+    padding-left: 10px;
+    border: none;
+    border: 1px solid black;
+
+    margin-bottom: 10px;
+}
+
+
+.edit__btn{
+    width: 310px;
+    margin-top: 20px;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
