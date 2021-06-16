@@ -13,8 +13,6 @@ const AddBook = () => {
         ISBN: '',
     })
 
-    const [authorError, setAuthorError] = useState('Поле не может быть пустым')
-
     const ref = firebase.firestore().collection('books1');
 
     const handleChange = (userKey, value) => {
@@ -33,13 +31,15 @@ const AddBook = () => {
                 Name: '',
                 Author: '',
                 Year: '',
-                Raiting: '',
-                ISBN: ''
+                Raiting: '0',
+                ISBN: '',
                 })
             })
             .catch(function (error){
                 console.log(error)
             })
+        
+        
     }
 
     return(

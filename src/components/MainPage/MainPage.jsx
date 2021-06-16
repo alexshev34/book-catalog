@@ -7,18 +7,22 @@ const MainPage = () => {
 
     const [books1, setBooks] = useState([])
     const [loading, setLoading] = useState(false) //задержка на прогрузку данных
-    const [sortAuthor, setSortAuthor] = useState(false)
     let history = useHistory();
 
     const ref = firebase.firestore().collection('books1');
 
     const getBooksList = () => {
         ref.onSnapshot((querySnapshot)=> {
-            const list = [];
-            querySnapshot.forEach((doc)=>{
-                list.push(doc.data());
-            });
-            setBooks(list)
+            setBooks(
+              querySnapshot.docs.map((doc) =>({
+                id: doc.id,
+                Name: doc.data().Name,
+                Author: doc.data().Author,
+                Year: doc.data().Year,
+                Raiting: doc.data().Raiting,
+                ISBN: doc.data().ISBN
+              }))
+            )
         })
     };
 
@@ -151,9 +155,6 @@ sort_name()
 
 reccomendation()
 
-function SortAuthor(){
-  setSortAuthor(true)
-}
 
     const elements = useMemo(() => {
       const grouppedElements = [];
@@ -162,7 +163,7 @@ function SortAuthor(){
         const group = (
           <div className="books">
               <div className="container">
-                <p className="books__title">Год: {year[key] == '0' ? 'Не определен' : year[key]}</p>
+                <p className="books__title">{`${year[key] == '0' ? 'Книги без указания года' :  'Год: ' + year[key]}`}</p>
                 {booksGroup.map(book => (
                   <div key={book.id}>
                     <div className="books__list">
@@ -193,7 +194,6 @@ function SortAuthor(){
         <div className="container">
           <div className="books__wrapper">
             <Link className="books__link" to="/addbook">Добавить книгу</Link>
-            <button onClick={SortAuthor}>По автору</button>
           </div>
           {recommendation_book == 'На данный момент нет подходящих книг' ? 
             <p className="books__title">Рекомендации: {recommendation_book}</p>

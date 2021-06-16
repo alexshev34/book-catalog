@@ -40,6 +40,8 @@ const EditBook = (route) => {
             .catch(function (error){
                 console.log(error)
             })
+
+            alert("Изменения успешно внесены")
     }
 
     const getBooksList = (id) => {
