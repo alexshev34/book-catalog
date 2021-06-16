@@ -33,6 +33,7 @@ const AddBook = () => {
                 Year: '',
                 Raiting: '0',
                 ISBN: '',
+                id: uuidv4()
                 })
             })
             .catch(function (error){

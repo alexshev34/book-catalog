@@ -6,14 +6,13 @@ import './EditBook.css'
 const EditBook = (route) => {
     const id = route.match.params.id
 
-    const [loading, setLoading] = useState(false)
     const [books1, setBooks] = useState({
-        id: id,
         Name: '',
         Author: '',
         Year: '',
         Raiting: '',
         ISBN: '',
+        id: ''
     })
 
     const ref = firebase.firestore().collection('books1');
